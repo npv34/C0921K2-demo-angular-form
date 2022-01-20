@@ -1,0 +1,27 @@
+<h2>Thong tin user: {{ user?.name }}</h2>
+<table *ngIf="user" class="table">
+  <tr>
+    <td>Name</td>
+    <td>{{ user.name }}</td>
+  </tr>
+  <tr>
+    <td>Email</td>
+    <td>{{ user.email }}</td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td>{{ user.phone }}</td>
+  </tr>
+  <tr>
+    <td>Address</td>
+    <td>{{ user.address }}</td>
+  </tr>
+</table>
+<div *ngIf="logs.length > 0">
+  <ul>Log
+    <li *ngFor="let log of logs">
+      {{ log }}
+    </li>
+  </ul>
+
+</div>
