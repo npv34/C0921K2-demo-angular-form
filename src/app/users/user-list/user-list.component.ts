@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {IUser} from "../IUser";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatTableDataSource} from "@angular/material/table";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-user-list',
@@ -11,35 +12,12 @@ import {MatTableDataSource} from "@angular/material/table";
 export class UserListComponent implements OnInit {
 
   userClicked?: IUser;
-  users: IUser[] = [
-    {
-      id: 1,
-      name: "hiep",
-      email: "hiep@gmail.com",
-      phone: "0090909",
-      address: "HN"
-    },
-    {
-      id: 2,
-      name: "phong",
-      email: "phong@gmail.com",
-      phone: "0090909",
-      address: "HN"
-    },
-    {
-      id: 3,
-      name: "ha",
-      email: "ha@gmail.com",
-      phone: "0090909",
-      address: "HN"
-    }
-    ];
-
+  users: IUser[] = [];
   userFilter: IUser [] = []
   displayedColumns: string[] = ['STT', 'Name', 'Email', 'Action'];
-  dataSource = new MatTableDataSource<IUser>(this.users);
+  dataSource = new MatTableDataSource<IUser>(this.userService.getAll());
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
@@ -50,6 +28,7 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.users = this.userService.getAll();
     this.userFilter = this.users;
   }
 

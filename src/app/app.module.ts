@@ -12,6 +12,10 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import { MatButtonModule } from '@angular/material/button';
 import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { LoginComponent } from './login/login.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MasterComponent } from './master/master.component';
+import { UserAddComponent } from './users/user-add/user-add.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import {ReactiveFormsModule} from "@angular/forms";
     UserListComponent,
     UserDetailComponent,
     InputSearchComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+    NotFoundComponent,
+    MasterComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

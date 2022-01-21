@@ -1,5 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {IUser} from "../IUser";
+import {UserService} from "../../services/user.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user-detail',
@@ -9,10 +11,14 @@ import {IUser} from "../IUser";
 export class UserDetailComponent implements OnInit, OnChanges {
 
   logs: any[] = [];
-  @Input() user?: IUser
-  constructor() { }
+  user?: IUser | null
+  constructor(private userService: UserService,
+              private router: ActivatedRoute) { }
 
   ngOnInit(): void {
+    // @ts-ignore
+    let id = +this.router.snapshot.paramMap.get('id');
+    this.user = this.userService.getUserById(id);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
